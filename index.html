@@ -2,52 +2,220 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Math Formulas | Pre-Algebra, Algebra, Geometry</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Formulas</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f4; }
-    h1, h2 { color: #333; }
-    .formula {
-      background: white;
-      border-radius: 8px;
-      padding: 15px;
+    :root {
+      --bg: #f5f5dc; /* beige */
+      --primary: #800000; /* maroon */
+      --secondary: #f0e5d8; /* light beige */
+      --text: #333;
+      --accent: #a00000;
+    }
+    [data-theme="dark"] {
+      --bg: #2f2f2f;
+      --text: #ddd;
+      --primary: #880e4f;
+      --secondary: #37474f;
+      --accent: #ad1457;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 20px;
+      scroll-behavior: smooth;
+    }
+    h1 {
+      color: var(--primary);
+      text-align: center;
       margin-bottom: 20px;
+    }
+    .controls {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .controls button, .controls input {
+      margin: 5px;
+      padding: 8px 12px;
+      font-size: 14px;
+      border-radius: 4px;
+      border: 1px solid var(--primary);
+    }
+    .controls input {
+      width: 200px;
+    }
+    .accordion {
+      background-color: var(--primary);
+      color: #fff;
+      cursor: pointer;
+      padding: 15px;
+      margin-top: 10px;
+      border: none;
+      text-align: left;
+      font-size: 18px;
+      transition: background-color 0.3s;
+      border-radius: 4px;
+    }
+    .accordion:hover {
+      background-color: var(--accent);
+    }
+    .panel {
+      padding: 0 15px;
+      max-height: 0;
+      overflow: hidden;
+      background-color: var(--secondary);
+      transition: max-height 0.3s ease-out;
+      border-radius: 4px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-    .formula-title { font-size: 20px; font-weight: bold; }
-    .formula-equation { font-style: italic; margin: 10px 0; }
-    .formula-example { color: #555; }
+    .sub-accordion {
+      background-color: var(--secondary);
+      color: var(--primary);
+      cursor: pointer;
+      padding: 10px;
+      margin: 8px 0;
+      border: none;
+      text-align: left;
+      font-size: 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    .sub-accordion:hover {
+      background-color: #e0d5c8;
+    }
+    .sub-panel {
+      padding: 0 10px 10px;
+      max-height: 0;
+      overflow: hidden;
+      background-color: #fafafa;
+      transition: max-height 0.3s ease-out;
+      margin-bottom: 5px;
+      border-radius: 4px;
+      border-left: 3px solid var(--primary);
+    }
+    p { margin: 8px 0; }
+    #backToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: none;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 16px;
+    }
   </style>
 </head>
 <body>
-
   <h1>Math Formulas</h1>
+  <div class="controls">
+    <input type="text" id="search" placeholder="Search formulas...">
+    <button id="expandAll">Expand All</button>
+    <button id="collapseAll">Collapse All</button>
+    <button id="themeToggle">Toggle Theme</button>
+  </div>
 
-  <section id="pre-algebra">
-    <h2>Pre-Algebra</h2>
+  <!-- Sections -->
+  <button class="accordion">Pre-Algebra</button>
+  <div class="panel">
+    <!-- Formulas -->
+    <button class="sub-accordion">Order of Operations (PEMDAS)</button>
+    <div class="sub-panel"><p><strong>Definition:</strong> Parentheses → Exponents → Multiplication/Division → Addition/Subtraction</p><p><strong>Example:</strong> 3 + 6 × (5 + 4) ÷ 3² = 9</p></div>
+    <button class="sub-accordion">Distributive Property</button>
+    <div class="sub-panel"><p><strong>Formula:</strong> a(b + c) = ab + ac</p><p><strong>Example:</strong> 2(3 + 4) = 14</p></div>
+    <button class="sub-accordion">Percent</button>
+    <div class="sub-panel"><p><strong>Formula:</strong> part = percent × whole</p><p><strong>Example:</strong> 20% of 50 = 0.2 × 50 = 10</p></div>
+    <button class="sub-accordion">Ratio & Proportion</button>
+    <div class="sub-panel"><p><strong>Formula:</strong> a/b = c/d</p><p><strong>Example:</strong> 2/3 = 4/6</p></div>
+    <button class="sub-accordion">Absolute Value</button>
+    <div class="sub-panel"><p><strong>Definition:</strong> |x| = distance from zero</p><p><strong>Example:</strong> |–4| = 4</p></div>
+  </div>
 
-    <div class="formula">
-      <div class="formula-title">Order of Operations (PEMDAS)</div>
-      <div class="formula-equation">Parentheses → Exponents → Multiplication/Division → Addition/Subtraction</div>
-      <div class="formula-example">Example: 3 + 6 × (5 + 4) ÷ 3² = 3 + 6 × 9 ÷ 9 = 3 + 6 × 1 = 3 + 6 = 9</div>
-    </div>
+  <button class="accordion">Algebra 1</button>
+  <div class="panel">
+    <button class="sub-accordion">Slope-Intercept Form</button>
+    <div class="sub-panel"><p><strong>Formula:</strong> y = mx + b</p><p><strong>Example:</strong> y = 2x + 3</p></div>
+    <button class="sub-accordion">Point-Slope Form</button>
+    <div class="sub-panel"><p><strong>Formula:</strong> y – y₁ = m(x – x₁)</p><p><strong>Example:</strong> y – 2 = 3(x – 1)</p></div>
+    <button class="sub-accordion">Quadratic Formula</button>
+    <div class="sub-panel"><p><strong>Formula:</strong> x = [–b ± √(b² – 4ac)]/(2a)</p></div>
+    <button class="sub-accordion">Factoring Quadratics</button>
+    <div class="sub-panel"><p><strong>Example:</strong> x² + 5x + 6 = (x + 2)(x + 3)</p></div>
+    <button class="sub-accordion">Distance Formula</button>
+    <div class="sub-panel"><p><strong>Formula:</strong> d = √[(x₂ – x₁)² + (y₂ – y₁)²]</p></div>
+    <button class="sub-accordion">Midpoint Formula</button>
+    <div class="sub-panel"><p><strong>Formula:</strong> M = ((x₁+x₂)/2, (y₁+y₂)/2)</p></div>
+  </div>
 
-    <!-- More Pre-Algebra formulas here -->
-  </section>
+  <button class="accordion">Algebra 2</button>
+  <div class="panel">
+    <button class="sub-accordion">Exponential Growth/Decay</button>
+    <div class="sub-panel"><p><strong>Formula:</strong> A = A₀e^(kt)</p></div>
+    <button class="sub-accordion">Logarithm Properties</button>
+    <div class="sub-panel"><p>log(ab)=log a+log b<br>log(a/b)=log a–log b<br>log(a^c)=c·log a</p></div>
+    <button class="sub-accordion">Binomial Theorem</button>
+    <div class="sub-panel"><p><strong>Formula:</strong> (a+b)^n = Σ [nCk a^(n–k) b^k]</p></div>
+    <button class="sub-accordion">Complex Numbers</button>
+    <div class="sub-panel"><p>(a+bi)+(c+di)=(a+c)+(b+d)i</p></div>
+    <button class="sub-accordion">Sequences & Series</button>
+    <div class="sub-panel"><p>Arithmetic: aₙ=a₁+(n–1)d<br>Geometric: aₙ=a₁·r^(n–1)</p></div>
+  </div>
 
-  <section id="algebra-1">
-    <h2>Algebra 1</h2>
-    <!-- Algebra 1 formulas go here -->
-  </section>
+  <button class="accordion">Geometry</button>
+  <div class="panel">
+    <button class="sub-accordion">Pythagorean Theorem</button>
+    <div class="sub-panel"><p>a² + b² = c²</p></div>
+    <button class="sub-accordion">Area & Circumference of Circle</button>
+    <div class="sub-panel"><p>A = πr²; C = 2πr</p></div>
+    <button class="sub-accordion">Area of Triangle</button>
+    <div class="sub-panel"><p>A = ½bh</p></div>
+    <button class="sub-accordion">Volume of Cylinder & Cone</button>
+    <div class="sub-panel"><p>Cylinder: πr²h<br>Cone: (1/3)πr²h</p></div>
+    <button class="sub-accordion">Distance & Midpoint</button>
+    <div class="sub-panel"><p>See Algebra 1 section</p></div>
+  </div>
 
-  <section id="algebra-2">
-    <h2>Algebra 2</h2>
-    <!-- Algebra 2 formulas go here -->
-  </section>
-
-  <section id="geometry">
-    <h2>Geometry</h2>
-    <!-- Geometry formulas go here -->
-  </section>
-
+  <button id="backToTop">↑</button>
+  <script>
+    // Toggle acc
+    document.querySelectorAll('.accordion, .sub-accordion').forEach(acc => {
+      acc.addEventListener('click', () => {
+        let panel = acc.nextElementSibling;
+        panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + 'px';
+      });
+    });
+    // Controls
+    document.getElementById('expandAll').onclick = () => {
+      document.querySelectorAll('.panel, .sub-panel').forEach(p => {
+        p.style.maxHeight = p.scrollHeight + 'px';
+      });
+    };
+    document.getElementById('collapseAll').onclick = () => {
+      document.querySelectorAll('.panel, .sub-panel').forEach(p => {
+        p.style.maxHeight = null;
+      });
+    };
+    document.getElementById('themeToggle').onclick = () => {
+      document.documentElement.toggleAttribute('data-theme', 'dark');
+    };
+    // Search
+    document.getElementById('search').oninput = function() {
+      let term = this.value.toLowerCase();
+      document.querySelectorAll('.sub-accordion').forEach(btn => {
+        let txt = btn.innerText.toLowerCase() + btn.nextElementSibling.innerText.toLowerCase();
+        btn.style.display = txt.includes(term) ? '' : 'none';
+        btn.nextElementSibling.style.display = txt.includes(term) ? '' : 'none';
+      });
+    };
+    // Back to top
+    let back = document.getElementById('backToTop');
+    window.onscroll = () => { back.style.display = window.scrollY > 200 ? 'block' : 'none'; };
+    back.onclick = () => { window.scrollTo({top:0, behavior:'smooth'}); };
+  </script>
 </body>
 </html>
